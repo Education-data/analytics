@@ -868,11 +868,17 @@ $('.zzz').val(~~sum);
 		$.each(cartData_,function(){
 			console.log(this);
 		});
+        var any = Math.random() * 100;
+        var summ = parseFloat(localStorage.getItem('itogo')) + 580;/*parseFloat(localStorage.getItem('summ_dush')) + parseFloat(itemPrice)*/
+        var descr = 'Вами был совершен заказ №'+Math.round(any)+' на общую сумму '+summ+' руб. Чтобы отследить статус заказа, перейдите в личный кабинет.';
+        $('#success .form-description').html(descr);
+        $("#success").addClass("active")
 		localStorage.removeItem('cart');
 		localStorage.removeItem('count');
+		localStorage.removeItem('itogo');
         cartCont.innerHTML = 'В корзине пусто!';
 		$(".block_btn").removeClass("display");		
-		alert('Заказ оформлен!');
+		//alert('Заказ оформлен!');
 		document.getElementById('kol').innerHTML = '(0)';
     });
     
@@ -881,10 +887,10 @@ $('.zzz').val(~~sum);
 		$("#basket_mini_block").removeClass("display");
 		var itemId_='',
 		itemTitle_='',
-		itemPrice_='';
-		itemSize_='';
-		itemColor_='';
-		itemCategory_='';
+		itemPrice_='',
+		itemSize_='',
+		itemColor_='',
+		itemCategory_='',
 		itemImg_='';
 		
          $.each(e,function(){
@@ -909,11 +915,10 @@ $('.zzz').val(~~sum);
 				if (this.name == 'img_product'){
                     itemImg_ = this.value;
                 }
-                
         });
-          //console.log(e);
         var cartData = getCartData() || {}, // получаем данные корзины или создаём новый объект, если данных еще нет
             cartData_count = localStorage.getItem('count'), // получаем количество товаров в корзине
+            cartData_itogo = localStorage.getItem('itogo'), // получаем количество товаров в корзине
             
                 itemId = itemId_, // ID товара
                 itemTitle = itemTitle_, // название товара
@@ -925,12 +930,22 @@ $('.zzz').val(~~sum);
                 if (cartData_count==null){
                     cartData_count = 0;
                 }
+                if (cartData_itogo==null){
+                    console.log('444');
+                    cartData_itogo = 0;
+                }
                 ++cartData_count;
+                cartData_itogo = parseFloat(cartData_itogo) + parseFloat(itemPrice);
+                console.log('44444');
+                console.log(cartData_itogo);
                 localStorage.setItem("count",cartData_count);
+                localStorage.setItem("itogo",cartData_itogo);
             if(cartData.hasOwnProperty(itemId)){ // если такой товар уже в корзине, то добавляем +1 к его количеству
 	           cartData[itemId][6] += 1;
+	           cartData[itemId][8] = parseFloat(cartData[itemId][8]) + parseFloat(itemPrice);
+               
             } else { // если товара в корзине еще нет, то добавляем в объект
-                cartData[itemId] = [itemImg, itemTitle, itemSize, itemColor, itemPrice, itemCategory, 1, itemId];
+                cartData[itemId] = [itemImg, itemTitle, itemSize, itemColor, itemPrice, itemCategory, 1, itemId, itemPrice];
             }
         // Обновляем данные в LocalStorage
         if(!setCartData(cartData)){ 
@@ -975,7 +990,7 @@ $('.zzz').val(~~sum);
      
         // если что-то в корзине уже есть, начинаем формировать данные для вывода
         if(cartData !== null){
-            totalItems = '<table class="shopping_list"><tr><th>Изображение</th><th>Наименование</th><th>Размер</th><th>Цвет</th><th>Цена</th><th>Категория</th><th>Кол-во</th></tr>';
+            totalItems = '<table class="shopping_list"><tr><th>Изображение</th><th>Наименование</th><th>Размер</th><th>Цвет</th><th>Цена</th><th>Категория</th><th>Кол-во</th><th>Сумма</th></tr>';
             /*cartData[itemId] = [itemImg, itemTitle, itemSize, itemColor, itemPrice, itemCategory, 1];*/
             for(var items in cartData){
                 totalItems += '<tr>';
@@ -992,6 +1007,9 @@ $('.zzz').val(~~sum);
                 }
                 totalItems += '</tr>';
             }
+            totalItems += '<tr><td colspan="7" class="info">Сумма заказа</td><td>'+localStorage.getItem('itogo')+' руб</td></tr>';
+            totalItems += '<tr><td colspan="7" class="info">Доставка</td><td>580 руб.</td></tr>';
+            totalItems += '<tr><td colspan="7" class="info">ИТОГО</td><td>'+(parseFloat(localStorage.getItem('itogo')) + 580)+' руб</td></tr>';
             totalItems += '</table>';
 			totalItems += '<script>$(".block_btn").css("display", "block" );</script>';
 			$(".block_btn").addClass("display");
@@ -1008,6 +1026,7 @@ $('.zzz').val(~~sum);
     addEvent(d.getElementById('clear_cart'), 'click', function(e){
         localStorage.removeItem('cart');
         localStorage.removeItem('count');
+        localStorage.removeItem('itogo');
         cartCont.innerHTML = 'Корзина очищена!';
 		$(".block_btn").removeClass("display");	
         document.getElementById('kol').innerHTML = '(0)';

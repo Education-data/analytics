@@ -113,7 +113,7 @@
                   <img src="img/b3-2.jpg" alt="">
                   <div class="panel-text">
                      <p>СВИТЕР ЖЕНСКИЙ</p>
-                     <div class="price"> <span class="oldPrice js_old_price_curs">5800 руб.</span> <span class="newPrice js_new_price_curs">2900 руб.</span> </div>
+                     <div class="price"> <span class="oldPrice js_old_price_curs">5800 руб.</span> <span class="newPrice js_new_price_curs">3500 руб.</span> </div>
                      <button class="white-btn product__btn" data-popup=".popup-product_2">Открыть</button>
                   </div>
                </div>
@@ -272,6 +272,15 @@
             <div class="form-text"> Количество товаров по акции <span class="packages-count">18</span> шт. </div>
          </div>
       </div>
+      
+      <div id="success">
+         <div class="modal-close4"><img src="img/close.png" alt=""></div>
+         <div class="modal-content">
+            <div class="form-title">Заказ оформлен!</div>
+            <div class="form-description"></div>
+         </div>
+      </div>
+      
       <div class="overlay" style="left: 0px; display: none;">
          <div class="popup-products popup-products_1">
             <div class="popup popup-product popup-product_1" data-index="1">
@@ -361,7 +370,7 @@
                                 <div class="cpa-form-group cpa-form-group-odd cpa-form-group-last cpa-wrapper-field-submit"> <button class="cpa-input-submit add_to_cart">Добавить в корзину</button></div>
                               <input type="hidden" name="added_country" value="RU"/> 					
                               <input type="hidden" name="product_name" value="Свитер мужской Норвежский узор"/> 					
-                              <input type="hidden" name="product_price" value="3000"/> 					
+                              <input type="hidden" name="product_price" value="2900"/> 					
                               <input type="hidden" name="product_id" value="178"/> 					
                               <input type="hidden" name="category_name" value="Свитера"/> 					
                               <input type="hidden" name="img_product" value="img/3_men.jpg"/> 					
@@ -430,7 +439,7 @@
                   </div>
                   <div class="modal-content">
                      <h3 class="p-prod__title"> Свитер женский Норвежский узор</h3>
-                     <div class="modal-price"> <span class="oldPrice js_old_price_curs">5800 руб.</span> <span class="newPrice js_new_price_curs">2900 руб.</span> </div>
+                     <div class="modal-price"> <span class="oldPrice js_old_price_curs">5800 руб.</span> <span class="newPrice js_new_price_curs">3500 руб.</span> </div>
                      
                      <div>
                         <div class="form-title"> Заполните поля ниже
@@ -465,7 +474,7 @@
                                 <div class="cpa-form-group cpa-form-group-odd cpa-form-group-last cpa-wrapper-field-submit"> <button class="cpa-input-submit add_to_cart">Добавить в корзину</button></div>
                               <input type="hidden" name="added_country" value="RU"/> 					
                               <input type="hidden" name="product_name" value="Свитер женский Норвежский узор"/> 					
-                              <input type="hidden" name="product_price" value="2900"/> 					
+                              <input type="hidden" name="product_price" value="3500"/> 					
                               <input type="hidden" name="product_id" value="179"/> 					
                               <input type="hidden" name="category_name" value="Свитера"/> 					
                               <input type="hidden" name="img_product" value="img/3_women.jpg"/> 					

@@ -1704,14 +1704,14 @@ form input[name=fio], form input[name=phone], form select {
     padding: 35px 15px
 }
 
-.modal-close {
+.modal-close, .modal-close4 {
     position: absolute;
     top: 10px;
     right: 20px;
     cursor: pointer
 }
 
-.modal-close:after {
+.modal-close:after, .modal-close4:after {
     position: fixed;
     content: "";
     top: 0;
@@ -3087,4 +3087,32 @@ form .size-block label{
 }
 .block_btn{
 	display:none;
+}
+table .info{
+    text-align:left;
+}
+#success.active {
+    display: block;
+}
+#success .form-title{
+    font-weight: bold;
+    font-size: 120%;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 15px;
+}
+#success .form-description{
+    text-align: center;
+}
+#success {
+    position: fixed;
+    display: none;
+    width: 90%;
+    max-width: 320px;
+    margin: 0 auto;
+    top: 60px;
+    left: 0;
+    right: 0;
+    overflow: auto;
+    z-index: 999;
 }
